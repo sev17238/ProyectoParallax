@@ -1,0 +1,37 @@
+
+/*
+  Archivo de prueba para la calibracion de sensores infrarojos IR y sensor ping))) ultrasonico en terminal.
+  
+*/
+//Librerias importadas
+#include "simpletools.h"                        // Se incluye la libreria simpletools
+#include "ping.h"                             // Si incluye la libreria del sensor ultrasonico
+
+// Variables globales 
+int irLeft, irRight;                          // Se declaran las variables que representan los sensores infrarojos
+int distance;                                 // Se declara la variable distancia
+
+int main()                                      // Funcion principal
+{
+  low(26);                                      // Puertos D/A0 y D/A1 se inicializan en nivel bajo 0 voltios
+  low(27);                                      
+
+  while(1)                                      // ciclo principal
+  {
+    freqout(11, 1, 28000);                      // lED infrarrojo inzquierdo
+    irLeft = input(10);                         // Sensor infrarojo izquierdo en puerto 10
+
+    freqout(1, 1, 28000);                       // se repite para el lado derecho
+    irRight = input(2);
+    
+    distance = ping_cm(8);                    // se toma la distancia en cm del sensor Ping)))
+
+    print("%c irLeft = %d, irRight = %d; distance = %d%c cm",       // se despliegan las variables de los IR en terminal
+           HOME,irLeft, irRight, distance,CLREOL);             // junto con la distancia del ping
+           
+    //print("%c distance = %d%c cm",            
+      //     HOME, distance, CLREOL);  
+           
+    pause(200);                                 // se hace una pausa antes de repetir
+  }
+}
