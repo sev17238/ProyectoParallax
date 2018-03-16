@@ -2,7 +2,7 @@
 /*
  * Algoritmos y estructuras de datos
  * Proyecto Parallax, Resolucion de laberinto
- * Josue Lopez 17000
+ * Josue Lopez 17081
  * Paul Belches 17000
  * Diego Sevilla 17238
  */
